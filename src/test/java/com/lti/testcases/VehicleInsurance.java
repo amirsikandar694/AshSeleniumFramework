@@ -12,7 +12,7 @@ public class VehicleInsurance extends TestBase {
 	@Test
 	public void loginHome() throws InterruptedException
 	{
-		System.setProperty("org.uncommons.reportng.escape-output", "false");
+		
 		driver.findElement(By.id(OR.getProperty("motorcylelink"))).click();
 		log.debug("Clicked on motorcycle link");
 		String title=driver.getTitle();
@@ -21,9 +21,7 @@ public class VehicleInsurance extends TestBase {
 		Thread.sleep(3000);
 		String insuranceType=driver.findElement(By.id(OR.getProperty("insuranceType"))).getText();
 		Assert.assertEquals(insuranceType, "Motorcycle Insurance");
-		Assert.assertTrue(driver.findElement(By.id(OR.getProperty("insuranceType"))).isDisplayed());
-		Reporter.log("Title verified");
-		Reporter.log("<a target=\"_blank\" href=\"C:\\Screenshot\\error.jpg\">Screenshot</a>");
+		Assert.assertFalse(driver.findElement(By.id(OR.getProperty("insuranceType"))).isDisplayed());
 		
 	}
 }
