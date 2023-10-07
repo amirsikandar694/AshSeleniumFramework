@@ -2,7 +2,6 @@ package com.lti.testcases;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import com.lti.base.TestBase;
@@ -22,6 +21,20 @@ public class VehicleInsurance extends TestBase {
 		String insuranceType=driver.findElement(By.id(OR.getProperty("insuranceType"))).getText();
 		Assert.assertEquals(insuranceType, "Motorcycle Insurance");
 		Assert.assertFalse(driver.findElement(By.id(OR.getProperty("insuranceType"))).isDisplayed());
+		
+	}
+	
+	@Test
+	public void loginHome2() throws InterruptedException
+	{
+		
+		driver.findElement(By.id(OR.getProperty("motorcylelink"))).click();
+		log.debug("Clicked on motorcycle link");
+		String title=driver.getTitle();
+		System.out.println(title);
+		Assert.assertEquals(title, "Enter Vehicle Data");
+		Thread.sleep(3000);
+		
 		
 	}
 }

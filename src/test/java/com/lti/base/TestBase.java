@@ -9,7 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
+import com.lti.utilities.ExtentManager;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 
 public class TestBase {
 	
@@ -18,8 +24,10 @@ public class TestBase {
 	public static Properties OR=new Properties();
 	public static FileInputStream fis;
 	public static Logger log=Logger.getLogger("devpinoyLogger");
+	public ExtentReports reo=ExtentManager.getInstance();
+	public static ExtentTest test;
 	
-	@BeforeSuite
+	@BeforeTest
 	public void setup() throws IOException
 	{
 		if (driver==null)
@@ -48,7 +56,7 @@ public class TestBase {
 		
 	}
 	
-	@AfterSuite
+	@AfterTest
 	public void teardown()
 	{
 		if(driver!=null)
